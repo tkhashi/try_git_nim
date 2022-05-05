@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  app:
+    container_name: web_app_nim
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    privileged: true
+    volumes: 
+      - .:/opt/webappnim
+    ports:
+      - "80:5000"                        # ホストの80番ポートをコンテナの5000番ポートへマウント.
+    working_dir: /opt/webappnim
+    entrypoint: ./entrypoint.sh            
